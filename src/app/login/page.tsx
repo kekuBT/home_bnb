@@ -54,6 +54,12 @@ export default function LoginPage() {
                 <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"> Sign In </button>
 
             </form>
+
+            <button
+                type="button"
+                onClick={() => signIn('google', { callbackUrl: "/dashboard" })}
+                className="bg-white border px-4 rounded text-black shadow hover:bg-gray-100 mt-2"
+            > Sign in with Google </button>
         </main>
     );
 }
