@@ -5,8 +5,8 @@ export async function GET() {
     try {
         const user = await prisma.user.create({
             data: {
-                name: 'Keku Test',
-                email: 'keku@example.com',
+                name: 'Bob Test',
+                email: 'bob@example.com',
                 password: 'test123',
             },
         });
