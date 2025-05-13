@@ -19,11 +19,12 @@ export default function LoginPage() {
             redirect: false,
             email,
             password,
+            callbackUrl: '/dashboard',
         });
 
         if (res?.error) {
             setError('Invalid email or password');
-        } else {
+        } else if (res?.ok) {
             router.push('/dashboard');
         }
     };
