@@ -31,7 +31,7 @@ export default function LoginPage() {
 
     return (
         <main className="flex min-h-screen items-center justify-center">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-white p-6 rounded shadow-md w-80">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-gray-200 text-black p-6 rounded shadow-md w-80">
                 <h1 className="text-xl font-bold">Login</h1>
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -54,13 +54,16 @@ export default function LoginPage() {
 
                 <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700"> Sign In </button>
 
+                <button
+                    type="button"
+                    onClick={() => signIn('google', { callbackUrl: "/dashboard" })}
+                    className="text-white w-full  bg-[#ff3705] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"
+
+                > Sign in with Google </button>
+
             </form>
 
-            <button
-                type="button"
-                onClick={() => signIn('google', { callbackUrl: "/dashboard" })}
-                className="bg-white border px-4 rounded text-black shadow hover:bg-gray-100 mt-2"
-            > Sign in with Google </button>
+
         </main>
     );
 }

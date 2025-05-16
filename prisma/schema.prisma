@@ -42,8 +42,23 @@ model Listing {
   userId      String
   user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  reservations Reservation[]
+}
+
+model Reservation {
+  id        String   @id @default(cuid())
+  userId    String
+  listingId String
+  startDate DateTime
+  endDate   DateTime
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Session {
@@ -66,9 +81,10 @@ model User {
   accounts Account[]
   sessions Session[]
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Listing   Listing[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Listing      Listing[]
+  reservations Reservation[]
 }
 
 model VerificationToken {
